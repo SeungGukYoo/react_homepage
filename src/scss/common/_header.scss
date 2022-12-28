@@ -1,0 +1,41 @@
+header {
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  .inner {
+    max-width: 1330px;
+    padding: 0 30px;
+    height: 90px;
+
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    .logo {
+      color: #000;
+      font-weight: bold;
+      font-size: 40px;
+    }
+    .gnb {
+      display: flex;
+      gap: 50px;
+      > li {
+        font-size: 17px;
+        > a {
+          color: #000;
+        }
+      }
+    }
+    .header_btn {
+      width: 170px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(56, 83, 75);
+      border-radius: 35px;
+      color: #fff;
+    }
+  }
+}
