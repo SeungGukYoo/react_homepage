@@ -7,9 +7,12 @@ function Header({ type }) {
   return (
     <header>
       <div className='inner'>
-        <Link className='logo' to='/'>
-          Vipp
-        </Link>
+        <h1>
+          <Link className='logo' to='/'>
+            Vipp
+          </Link>
+        </h1>
+
         <ul className='gnb'>
           <li>
             <NavLink to='/department'>Our Hotels</NavLink>
