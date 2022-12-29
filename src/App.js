@@ -2,8 +2,11 @@ import { Route, Switch } from 'react-router-dom';
 
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
-import Content from './components/main/Content';
+import AboutMain from './components/main/About_main';
+import BannelMain from './components/main/Bannel_main';
+import GalleryMain from './components/main/Gallery_main';
 import Figure from './components/main/Figure';
+import InfoMain from './components/main/Info_main';
 import About from './components/sub/About';
 import Contact from './components/sub/Contact';
 import Department from './components/sub/Department';
@@ -17,7 +20,10 @@ function App() {
         <Route exact path='/'>
           <Header type='main' />
           <Figure />
-          <Content />
+          <AboutMain />
+          <BannelMain />
+          <InfoMain />
+          <GalleryMain />
         </Route>
         <Route path='/'>
           <Header type='sub' />
