@@ -18,7 +18,9 @@ function AboutMain() {
               all our rooms in one place, we offer a curated <br />
               selection of destinations for unique experiences.
             </p>
-            <Link to='/'>Book a Room</Link>
+            <Link className='globalButton' to='/'>
+              Book a Room
+            </Link>
           </div>
         </article>
         <article className='about_image'>
