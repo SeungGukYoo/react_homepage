@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavbarPc from './Navbar_pc';
 import NavbarTablet from './Navbar_tablet';
 
 function Header({ type }) {
-  console.log(type);
-
   return (
-    <header>
+    <header className={type}>
       <div className='inner'>
         <h1>
           <Link className='logo' to='/'>
