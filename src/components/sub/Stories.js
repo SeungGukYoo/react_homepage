@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../common/Layout';
 
 function Stories(props) {
   return (
-    <div>
+    <Layout name={'stories'}>
       <h1>this is Stories!</h1>
-    </div>
+    </Layout>
   );
 }
 

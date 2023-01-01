@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../common/Layout';
 
 function Department(props) {
   return (
-    <div>
+    <Layout name={'department'}>
       <h1>this is department</h1>
-    </div>
+    </Layout>
   );
 }
 
