@@ -2,7 +2,7 @@ import React from 'react';
 
 function GalleryMain(props) {
   return (
-    <section className='gallery_main'>
+    <section className='gallery_main scrollContent'>
       <div className='inner'>
         <h1>
           <span>Our latest </span>

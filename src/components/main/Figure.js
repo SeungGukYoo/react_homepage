@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useEffect } from 'react';
 
-function Figure(props) {
+function Figure() {
+  const innerRef = useRef(null);
+  useEffect(() => {
+    const child = innerRef.current.querySelectorAll('div');
+    [...child].map((el) => (el.children[0].style.transform = 'translateY(0%)'));
+  }, []);
+
   return (
-    <section className='figure'>
+    <section className='figure scrollContent'>
       <div className='background'></div>
-      <div className='inner'>
+      <div ref={innerRef} className='inner'>
         <div className='figure_sub_title'>
           <p>ABOUT THE VIPP HOTEL</p>
         </div>

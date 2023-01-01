@@ -2,7 +2,7 @@ import React from 'react';
 
 function BannelMain() {
   return (
-    <section className='bannel_main'>
+    <section className='bannel_main scrollContent'>
       <div className='inner'>
         <video autoPlay muted loop>
           <source src={`${process.env.PUBLIC_URL}/videos/main_video.mp4`} />

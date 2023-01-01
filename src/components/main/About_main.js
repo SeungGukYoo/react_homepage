@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function AboutMain() {
   return (
-    <section className='about_main'>
+    <section className='about_main scrollContent'>
       <div className='inner'>
         <article className='about_description'>
           <div>

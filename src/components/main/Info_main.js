@@ -2,7 +2,7 @@ import React from 'react';
 
 function InfoMain() {
   return (
-    <section className='info_main'>
+    <section className='info_main scrollContent'>
       <div className='inner'>
         <article className='info_description'>
           <div>
