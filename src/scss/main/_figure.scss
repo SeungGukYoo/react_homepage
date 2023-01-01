@@ -19,15 +19,26 @@
     justify-content: center;
     flex-direction: column;
     .figure_sub_title {
+      overflow: hidden;
       > p {
+        transition: 1s;
+        transition-delay: 1.2s;
+        transform: translateY(100%);
         font-family: 'Raleway', sans-serif;
         color: #fff;
         font-size: 18px;
         width: 100%;
+        &.on {
+          transform: translateY(0%);
+        }
       }
     }
     .figure_title {
+      overflow: hidden;
+
       > h1 {
+        transform: translateY(150%);
+        transition-duration: 1s;
         font-family: 'Raleway', sans-serif;
         color: #fff;
         font-size: 76px;
@@ -37,12 +48,16 @@
       }
     }
     .figure_description {
+      overflow: hidden;
       > p {
+        transition: 2s;
+        transition-delay: 0.5s;
         font-family: 'Raleway', sans-serif;
         color: #fff;
         font-size: 18px;
         text-shadow: 1px 1px 0px rgba($color: #000000, $alpha: 0.6);
         text-align: center;
+        transform: translateY(100%);
       }
     }
   }
