@@ -2,6 +2,7 @@ $tablet: 1179px;
 $mobile: 520px;
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import 'common/reset';
+@import 'common/layout';
 @import 'common/header';
 @import 'common/footer';
 @import 'main/figure';
@@ -9,7 +10,7 @@ $mobile: 520px;
 @import 'main/bannel_main';
 @import 'main/info_main';
 @import 'main/gallery_main';
-
+@import 'sub/contact';
 .globalButton {
   font-family: 'Raleway', sans-serif;
   display: block;
@@ -22,5 +23,6 @@ $mobile: 520px;
   border-radius: 30px;
   background-color: rgb(56, 83, 75);
   color: #fff;
+  
   font-size: 16px;
 }
