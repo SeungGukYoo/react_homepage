@@ -1,4 +1,9 @@
+import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useState } from 'react';
 
 function GalleryMain(props) {
   const images = [
@@ -21,6 +26,28 @@ function GalleryMain(props) {
       source: '/images/gallery_image6.jpg'
     }
   ];
+  const ref = useRef(null);
+  const articleRef = useRef(null);
+  const [container, setContainer] = useState(0);
+  const moveLeftArrow = () => {
+    if (container > -1600) {
+      ref.current.style.transform = `translateX(${container - articleRef.current}px)`;
+      setContainer((prev) => (prev += -400));
+    }
+  };
+  const moveRightArrow = () => {
+    if (container < 0) {
+      ref.current.style.transform = `translateX(${container + articleRef.current}px)`;
+      setContainer((prev) => (prev += 400));
+    }
+    if (container < 0) {
+    }
+  };
+  useEffect(() => {
+    console.log('ssss');
+    const width = parseInt(getComputedStyle(articleRef.current)['width']);
+    articleRef.current = width;
+  }, []);
   return (
     <section className='gallery_main scrollContent'>
       <div className='inner'>
@@ -30,12 +57,20 @@ function GalleryMain(props) {
         </h1>
         <p>Go to Instagram</p>
         <div className='wrap'>
-          {images.map((img, idx) => (
-            <article key={idx}>
-              <img src={process.env.PUBLIC_URL + img.source} alt='' />
-            </article>
-          ))}
+          <div className='container' ref={ref}>
+            {images.map((img, idx) => (
+              <article key={idx} ref={articleRef}>
+                <img src={process.env.PUBLIC_URL + img.source} alt='' />
+              </article>
+            ))}
+          </div>
         </div>
+        {container > -1600 && (
+          <FontAwesomeIcon className='leftArrow' icon={faCaretLeft} onClick={moveLeftArrow} />
+        )}
+        {container < 0 && (
+          <FontAwesomeIcon className='rightArrow' icon={faCaretRight} onClick={moveRightArrow} />
+        )}
       </div>
     </section>
   );
