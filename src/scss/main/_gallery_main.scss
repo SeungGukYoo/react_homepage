@@ -2,9 +2,10 @@
   width: 100%;
   overflow: hidden;
   .inner {
+    position: relative;
     padding: 100px 0;
     margin-left: 200px;
-    overflow: hidden;
+
     h1 {
       font-size: 40px;
       font-family: 'Raleway', sans-serif;
@@ -18,22 +19,35 @@
       margin-bottom: 25px;
     }
     .wrap {
-      width: 100vw;
-      display: flex;
-      overflow: hidden;
       padding-bottom: 10px;
-      article {
-        margin-right: 10px;
-        width: 400px;
-        min-width: 400px;
-        height: 400px;
-        box-shadow: 6px 6px 7px 0px rgb(0 0 0 / 31%);
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+      overflow: hidden;
+      .container {
+        transition: 0.5s;
+        display: flex;
+        position: relative;
+
+        article {
+          margin-right: 10px;
+          width: 400px;
+          min-width: 400px;
+          height: 400px;
+          box-shadow: 6px 6px 7px 0px rgb(0 0 0 / 31%);
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
       }
+    }
+    .leftArrow {
+      cursor: pointer;
+      font-size: 40px;
+      margin-right: 30px;
+    }
+    .rightArrow {
+      cursor: pointer;
+      font-size: 40px;
     }
   }
 }
