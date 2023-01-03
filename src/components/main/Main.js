@@ -11,13 +11,15 @@ function Main() {
   const itemHeigthArr = useRef([]);
   const mainRef = useRef(null);
 
-  useEffect(() => {
-    itemHeigthArr.current = Scroll(mainRef);
-    window.addEventListener('resize', () => (itemHeigthArr.current = Scroll(mainRef)));
-    return () => {
-      window.removeEventListener('resize', Scroll);
-    };
-  }, []);
+  // const print = () => {
+  //   console.log(mainRef.current);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener('resize', print);
+  //   return () => {
+  //     window.removeEventListener('resize', print);
+  //   };
+  // }, []);
 
   return (
     <main ref={mainRef}>
