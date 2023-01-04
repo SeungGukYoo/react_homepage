@@ -72,7 +72,14 @@ function ContactForm() {
   };
   const resetForm = () => {
     setErr({});
-    setCurrentValue({});
+    setCurrentValue({
+      userName: '',
+      userId: '',
+      userPwd: '',
+      userPwdCheck: '',
+      userEmail: '',
+      userText: ''
+    });
     setSubmit(false);
   };
   useEffect(() => {
