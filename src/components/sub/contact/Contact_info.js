@@ -1,48 +1,13 @@
 import React from 'react';
 import { faComments, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { memo } from 'react';
+import ContactForm from './Contact_form';
 
 function ContactInfo() {
   return (
     <div className='contact_info'>
-      <article>
-        <h2>Send a Message</h2>
-        <p>
-          A place where rare and unexpected pleasures are artfully woven into every stay and guests
-          unlock unique and enriching moments.
-        </p>
-        <form action='none'>
-          <div className='vaild'>
-            <label htmlFor='name'>Name</label>
-            <input type='text' name='name' id='name' required />
-          </div>
-          <div>
-            <label htmlFor='emal'>Email</label>
-            <input type='email' name='email' id='email' />
-          </div>
-          <div>
-            <label htmlFor='room'>Choice Room</label>
-            <select name='room' id='room'>
-              <option value='etc'>Choice</option>
-              <option value='loft'>Vipp Loft</option>
-              <option value='shelter'>Vipp Shelter</option>
-              <option value='chimney'>Vipp Chimney</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor='phone'>Phone Number</label>
-            <input type='text' name='phone' id='phone' />
-          </div>
-          <div>
-            <label htmlFor='message'>Message</label>
-            <textarea name='message' id='message' cols='30' rows='40'></textarea>
-          </div>
-        </form>
-
-        <button type='submit' className='globalButton'>
-          Submit
-        </button>
-      </article>
+      <ContactForm />
       <article>
         <div>
           <h2>Call us</h2>
@@ -98,4 +63,4 @@ function ContactInfo() {
   );
 }
 
-export default ContactInfo;
+export default memo(ContactInfo);

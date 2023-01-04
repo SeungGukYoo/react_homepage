@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Layout from '../common/Layout';
-import ContactInfo from './Contact_info';
+import ContactInfo from './contact/Contact_info';
 
 function Contact(props) {
   const { kakao } = window;
-  const mapArray = [
+  const [info] = useState([
     {
       title: 'VIPP SEOUL',
       position: new kakao.maps.LatLng(37.5716352, 126.9767435)
@@ -19,32 +19,44 @@ function Contact(props) {
       title: 'VIPP BUSAN',
       position: new kakao.maps.LatLng(35.1295178, 129.094151)
     }
-  ];
-  const [info] = useState(mapArray);
+  ]);
 
   const [currentIdx, setCurrentIdx] = useState(0);
+  const mapInstance = useRef(null);
   const mapContainer = useRef(null);
-  console.log(currentIdx);
-  const mapOption = {
+  const mapOption = useRef(null);
+  const mapTypeControl = useRef(null);
+  const zoomControl = useRef(null);
+  const moveLatLon = info[currentIdx].position;
+  const markerPosition = info[currentIdx].position;
+  const marker = useMemo(
+    () =>
+      new kakao.maps.Marker({
+        position: markerPosition
+      }),
+    [markerPosition, kakao]
+  );
+
+  mapOption.current = {
     center: info[currentIdx].position,
     level: 2
   };
-
-  const moveLatLon = info[currentIdx].position;
-
-  const markerPosition = info[currentIdx].position;
-  const marker = new kakao.maps.Marker({
-    position: markerPosition
-  });
+  zoomControl.current = new kakao.maps.ZoomControl();
 
   useEffect(() => {
-    const map = new kakao.maps.Map(mapContainer.current, mapOption);
-    marker.setMap(map);
-    window.addEventListener('resize', () => map.setCenter(moveLatLon));
+    mapContainer.current.innerHTML = '';
+    mapInstance.current = new kakao.maps.Map(mapContainer.current, mapOption.current);
+    mapInstance.current.addControl(zoomControl.current, kakao.maps.ControlPosition.BOTTOMRIGHT);
+    mapInstance.current.setZoomable(false);
+    mapTypeControl.current = new kakao.maps.MapTypeControl();
+
+    const resizeMap = () => mapInstance.current.setCenter(moveLatLon);
+    marker.setMap(mapInstance.current);
+    window.addEventListener('resize', resizeMap);
     return () => {
-      window.removeEventListener('resize', () => map.setCenter(moveLatLon));
+      window.removeEventListener('resize', resizeMap);
     };
-  }, [currentIdx]);
+  }, [currentIdx, kakao, mapOption, marker, moveLatLon]);
 
   return (
     <Layout name={'Contact'}>
@@ -54,11 +66,17 @@ function Contact(props) {
           <h2>Location</h2>
           <div id='map' className='kakaoMap' ref={mapContainer}></div>
           <ul>
-            {info.map((el, idx) => (
-              <li key={idx} onClick={() => setCurrentIdx(idx)}>
-                {el.title}
-              </li>
-            ))}
+            {info.map((el, idx) => {
+              return (
+                <li
+                  key={idx}
+                  className={idx === currentIdx ? 'on' : ''}
+                  onClick={() => setCurrentIdx(idx)}
+                >
+                  {el.title}
+                </li>
+              );
+            })}
           </ul>
         </section>
       </section>
