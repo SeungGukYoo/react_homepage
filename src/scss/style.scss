@@ -23,6 +23,18 @@ $mobile: 520px;
   border-radius: 30px;
   background-color: rgb(56, 83, 75);
   color: #fff;
-  
   font-size: 16px;
+}
+
+.hidden {
+  position: absolute;
+  top: -999999px;
+}
+
+fieldset {
+  border: none;
+}
+
+textarea {
+  resize: none;
 }
