@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React from 'react';
+import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Layout from '../common/Layout';
 
 function About(props) {
   const [videos, setVideos] = useState([]);
+  const [button, setButton] = useState('1');
+  const btnRefList = useRef(null);
 
   const playId = 'PL8Yp2hhTedFZOl_wbDTw7Pmx9iAxk6A48';
   const url =
@@ -16,15 +19,29 @@ function About(props) {
     setVideos(json.data.items);
   };
 
+  const clickBtn = (e) => {
+    if (e.target === e.currentTarget) return;
+    if (button !== e.target.dataset.index) {
+      setButton(e.target.dataset.index);
+    }
+  };
+
   useEffect(() => {
+    console.log('ssss');
     getPlayList();
   }, []);
   return (
     <Layout name={'Youtube'}>
-      <ul className='button'>
-        <li>PART 1</li>
-        <li className='on'>PART 2</li>
-        <li>PART 3</li>
+      <ul className='button' ref={btnRefList} onClick={clickBtn}>
+        <li data-index='1' className={button === '1' ? 'on' : 'off'}>
+          PART 1
+        </li>
+        <li data-index='2' className={button === '2' ? 'on' : 'off'}>
+          PART 2
+        </li>
+        <li data-index='3' className={button === '3' ? 'on' : 'off'}>
+          PART 3
+        </li>
       </ul>
 
       <ul className='youtube_container'>
