@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
-import About from './components/sub/About';
+import Youtube from './components/sub/Youtube';
 import Contact from './components/sub/Contact';
 import Department from './components/sub/Department';
 import Stories from './components/sub/Stories';
@@ -17,7 +17,7 @@ function App() {
         <Route path='/' render={() => <Header type={'sub'} />} />
       </Switch>
 
-      <Route path='/about' component={About} />
+      <Route path='/youtube' component={Youtube} />
       <Route path='/department' component={Department} />
       <Route path='/contact' component={Contact} />
       <Route path='/stories' component={Stories} />

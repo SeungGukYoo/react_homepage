@@ -9,7 +9,7 @@ function NavbarPc() {
           <NavLink to='/department'>Our Hotels</NavLink>
         </li>
         <li>
-          <NavLink to='/about'>About</NavLink>
+          <NavLink to='/youtube'>Youtube</NavLink>
         </li>
         <li>
           <NavLink to='/stories'>Stories</NavLink>
