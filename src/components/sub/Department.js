@@ -86,7 +86,7 @@ function Department(props) {
       <ul>
         {members.map((member, idx) => {
           return (
-            <li style={{ order: idx }}>
+            <li style={{ order: idx }} key={idx}>
               <div>
                 <div className='imgBox'>
                   <img src={`${process.env.PUBLIC_URL}/images/department/${member.pic}`} alt='' />
