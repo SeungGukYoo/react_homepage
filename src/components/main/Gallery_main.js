@@ -40,11 +40,8 @@ function GalleryMain(props) {
       ref.current.style.transform = `translateX(${container + articleRef.current}px)`;
       setContainer((prev) => (prev += 400));
     }
-    if (container < 0) {
-    }
   };
   useEffect(() => {
-    console.log('ssss');
     const width = parseInt(getComputedStyle(articleRef.current)['width']);
     articleRef.current = width;
   }, []);
