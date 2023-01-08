@@ -84,7 +84,6 @@ function ContactForm() {
   };
   useEffect(() => {
     const isSend = Object.keys(err).length;
-    console.log(err);
     if (isSend === 0 && submit) {
       alert('회원가입이 완료되었습니다.');
       history.push('/');
