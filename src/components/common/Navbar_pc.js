@@ -12,10 +12,10 @@ function NavbarPc() {
           <NavLink to='/youtube'>Youtube</NavLink>
         </li>
         <li>
-          <NavLink to='/stories'>Stories</NavLink>
+          <NavLink to='/gallery'>Gallery</NavLink>
         </li>
         <li>
-          <NavLink to='/gallery'>Gallery</NavLink>
+          <NavLink to='/contact'>Contact</NavLink>
         </li>
       </ul>
       <Link className='globalButton' to='/'>

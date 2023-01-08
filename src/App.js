@@ -20,7 +20,7 @@ function App() {
       <Route path='/youtube' component={Youtube} />
       <Route path='/department' component={Department} />
       <Route path='/contact' component={Contact} />
-      <Route path='/stories' component={Gallery} />
+      <Route path='/gallery' component={Gallery} />
 
       <Footer />
     </>
