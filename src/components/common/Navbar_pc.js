@@ -15,7 +15,7 @@ function NavbarPc() {
           <NavLink to='/stories'>Stories</NavLink>
         </li>
         <li>
-          <NavLink to='/contact'>Contact</NavLink>
+          <NavLink to='/gallery'>Gallery</NavLink>
         </li>
       </ul>
       <Link className='globalButton' to='/'>

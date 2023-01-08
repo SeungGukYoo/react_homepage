@@ -23,7 +23,7 @@ function NavbarTablet() {
             <NavLink to='/youtube'>Youtube</NavLink>
           </li>
           <li>
-            <NavLink to='/stories'>Stories</NavLink>
+            <NavLink to='/gallery'>Gallery</NavLink>
           </li>
           <li>
             <NavLink to='/contact'>Contact</NavLink>
