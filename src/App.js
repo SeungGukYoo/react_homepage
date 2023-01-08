@@ -9,13 +9,17 @@ import Gallery from './components/sub/Gallery';
 import Main from './components/main/Main';
 import Contact from './components/sub/Contact';
 import './scss/style.scss';
+import NavbarTablet from './components/common/Navbar_tablet';
+import { useRef } from 'react';
 
 function App() {
+  const openState = useRef(null);
+
   return (
     <>
       <Switch>
-        <Route exact path='/' component={Main} />
-        <Route path='/' render={() => <Header type={'sub'} />} />
+        <Route exact path='/' render={() => <Main type={'main'} openState={openState} />} />
+        <Route path='/' render={() => <Header type={'sub'} openState={openState} />} />
       </Switch>
       <Route path='/youtube' component={Youtube} />
       <Route path='/department' component={Department} />
@@ -23,6 +27,7 @@ function App() {
       <Route path='/gallery' component={Gallery} />
 
       <Footer />
+      <NavbarTablet ref={openState} />
     </>
   );
 }
