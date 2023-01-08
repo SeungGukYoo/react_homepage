@@ -1,0 +1,35 @@
+.Gallery {
+  .masonry_container {
+    article {
+      width: 25%;
+      padding: 13px;
+      .flickr_box {
+        width: 100%;
+        background-color: #eee;
+        padding: 25px;
+        box-shadow: 5px 7px 16px -3px rgba(0, 0, 0, 0.25);
+        margin-bottom: 10px;
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+        > p {
+          display: block;
+          width: 100%;
+          // background-color: #fff;
+          font-size: 11px;
+          margin-top: 10px;
+          display: flex;
+          justify-content: space-between;
+
+          span {
+            flex: 1;
+            &:last-child {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}
