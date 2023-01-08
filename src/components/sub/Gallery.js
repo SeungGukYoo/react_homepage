@@ -16,7 +16,7 @@ function Gallery(props) {
     const json = await axios.get(
       `${baseUrl}method=${trand}&api_key=${key}&per_page=20&extras=date_taken&format=json&nojsoncallback=1`
     );
-    console.log(json.data.photos.photo);
+
     setPhotos(json.data.photos.photo);
   };
 
