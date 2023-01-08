@@ -30,18 +30,13 @@ function Gallery(props) {
 
   return (
     <Layout name={'Gallery'}>
-      {/* <div className='masonry_container'></div> */}
-      <Masonry
-        options={masonryOptions} // default {}
-        breakpointCols={4}
-        className='masonry_container'
-      >
+      <Masonry options={masonryOptions} className='masonry_container'>
         {photos.map((photo) => {
           const title = photo.title.length > 20 ? photo.title.substring(0, 21) + '..' : photo.title;
           const date = photo.datetaken.split(' ')[0];
           return (
-            <article>
-              <div key={photo.secret} className='flickr_box'>
+            <article key={photo.secret}>
+              <div className='flickr_box'>
                 <img
                   src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg`}
                   alt={photo.title}
