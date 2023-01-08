@@ -29,6 +29,71 @@ $mobile: 520px;
   font-size: 16px;
 }
 
+.mobile_navbar {
+  display: none;
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 300px;
+  height: 100vh;
+  background-color: #eee;
+  transition: 0.5s;
+  &.off {
+    transform: translateX(-100%);
+  }
+  &.on {
+    transform: translateX(0%);
+  }
+  h1 {
+    position: relative;
+    text-align: center;
+    padding: 21px 0;
+
+    font-size: 40px;
+
+    &::after {
+      content: 'An untraditional hotel';
+      font-size: 12px;
+      position: absolute;
+      left: 31%;
+      bottom: 3px;
+      color: #999;
+    }
+  }
+  ul {
+    width: 100%;
+    margin-top: 30px;
+
+    li {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto;
+      width: 80%;
+      height: 70px;
+      a {
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+        color: #000;
+      }
+      border-bottom: 1px solid black;
+      &:nth-of-type(1) {
+        border-top: 1px solid black;
+      }
+    }
+  }
+}
+.menu_btn {
+  // display: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 .hidden {
   position: absolute;
   top: -999999px;
@@ -40,4 +105,10 @@ fieldset {
 
 textarea {
   resize: none;
+}
+
+@media screen and (max-width: $tablet) {
+  .mobile_navbar {
+    display: block;
+  }
 }
