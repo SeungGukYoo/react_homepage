@@ -1,38 +1,43 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useImperativeHandle } from 'react';
+import { forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-function NavbarTablet() {
+const NavbarTablet = forwardRef((props, ref) => {
   const [open, setOpen] = useState(false);
+
   const navRef = useRef(null);
-  const menuOpen = () => {
-    open ? (navRef.current = '') : (navRef.current = 'on');
-    setOpen((prev) => !prev);
-  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      toggle: () => setOpen((prev) => !prev)
+    };
+  });
+  useEffect(() => {
+    window.addEventListener('resize', () => window.innerWidth > 1179 && setOpen(false));
+  }, []);
 
   return (
-    <>
-      <nav className={`mobile_navbar ${navRef.current}`}>
-        <h1>vipp</h1>
-        <ul ref={navRef}>
-          <li>
-            <NavLink to='/department'>Our Hotels</NavLink>
-          </li>
-          <li>
-            <NavLink to='/youtube'>Youtube</NavLink>
-          </li>
-          <li>
-            <NavLink to='/gallery'>Gallery</NavLink>
-          </li>
-          <li>
-            <NavLink to='/contact'>Contact</NavLink>
-          </li>
-        </ul>
-      </nav>
-      <FontAwesomeIcon icon={faBars} className='menu_btn' onClick={menuOpen} />
-    </>
+    <nav className={`mobile_navbar ${open ? 'on' : 'off'}`} ref={navRef}>
+      <h1>
+        <NavLink to='/'>vipp</NavLink>
+      </h1>
+      <ul>
+        <li>
+          <NavLink to='/department'>Our Hotels</NavLink>
+        </li>
+        <li>
+          <NavLink to='/youtube'>Youtube</NavLink>
+        </li>
+        <li>
+          <NavLink to='/gallery'>Gallery</NavLink>
+        </li>
+        <li>
+          <NavLink to='/contact'>Contact</NavLink>
+        </li>
+      </ul>
+    </nav>
   );
-}
+});
 
 export default NavbarTablet;
