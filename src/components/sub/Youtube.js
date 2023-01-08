@@ -56,7 +56,6 @@ function About(props) {
   };
 
   useEffect(() => {
-    console.log('useEffct');
     setShow(false);
     getPlayList(btnInfo.current[parseInt(button) - 1]);
   }, [btnInfo]);
