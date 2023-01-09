@@ -6,10 +6,10 @@ export const getYoutube = async (Info) => {
     playId = 'PL8Yp2hhTedFZOl_wbDTw7Pmx9iAxk6A48';
   }
   if (Info.type === 'attraction') {
-    playId = 'PL8Yp2hhTedFZOl_wbDTw7Pmx9iAxk6A48';
+    playId = 'PL8Yp2hhTedFaB2O-x07LTTeScBKQkkKSb';
   }
   if (Info.type === 'food') {
-    playId = 'PL8Yp2hhTedFYamvuIbGJjdF_YI_nZ2vf';
+    playId = 'PL8Yp2hhTedFYamvuIbGJjdF_YI_nZ2vf-';
   }
 
   const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playId}&maxResults=${Info.count}&key=AIzaSyCzFsvPUv4oQBwHeCsYH1FxMueWv-GAiY8`;
