@@ -10,77 +10,61 @@ import Layout from '../common/Layout';
 import * as types from '../../redux/actionType';
 
 function About(props) {
-  const [videos, setVideos] = useState([]);
-  const [button, setButton] = useState('1');
-  const btnRefList = useRef(null);
+  const [videos, setVideos] = useState({ type: 'interest', count: 6 });
+  const [button, setButton] = useState('interest');
   const [show, setShow] = useState(false);
-  const btnInfo = useRef([
-    {
-      playId: 'PL8Yp2hhTedFZOl_wbDTw7Pmx9iAxk6A48',
-      maxResult: 18
-    },
-    {
-      playId: 'PL8Yp2hhTedFaB2O-x07LTTeScBKQkkKSb',
-      maxResult: 24
-    },
-    {
-      playId: 'PL8Yp2hhTedFYamvuIbGJjdF_YI_nZ2vf-',
-      maxResult: 15
-    }
-  ]);
+  const btnRefList = useRef(null);
   const count = useRef(6);
+  const dispatch = useDispatch();
 
-  const getPlayList = async (btnInfo) => {
-    const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${btnInfo.playId}&maxResults=${count.current}&key=AIzaSyCzFsvPUv4oQBwHeCsYH1FxMueWv-GAiY8`;
-    const json = await axios.get(url);
-    setVideos(json.data.items);
-    setTimeout(() => {
-      setShow(true);
-    }, 500);
+  const maxResult = {
+    interest: 18,
+    attraction: 24,
+    food: 15
   };
-  useSelector((store) => {
-    console.log(store.youtubeReducer.youtube);
-  });
 
+  const data = useSelector((store) => store.youtubeReducer.youtube);
   const clickBtn = (e) => {
     if (e.target === e.currentTarget) return;
-    if (button !== e.target.dataset.index) {
-      console.log('clickBtn');
-      count.current = 6;
-      setButton(e.target.dataset.index);
-      setShow(false);
-      getPlayList(btnInfo.current[parseInt(e.target.dataset.index - 1)]);
-    }
+    if (e.target.dataset.type === button) return;
+    setShow(false);
+    setButton(e.target.dataset.type);
+    count.current = 6;
+    setVideos({ ...videos, type: e.target.dataset.type, count: count.current });
   };
 
   const moreLoad = () => {
-    if (count === btnInfo.current[parseInt(button) - 1].maxResult) return;
-    console.log('moreload');
     count.current += 6;
-    getPlayList(btnInfo.current[parseInt(button) - 1]);
+    setVideos({ ...videos, count: count.current });
   };
 
   useEffect(() => {
-    setShow(false);
-    getPlayList(btnInfo.current[parseInt(button) - 1]);
-  }, [btnInfo]);
+    dispatch({ type: types.YOUTUBE.start, Info: videos });
+  }, [dispatch, videos, show]);
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      setShow(true);
+      return clearTimeout(delay);
+    }, 500);
+  }, [videos]);
 
   return (
     <Layout name={'Youtube'}>
       <ul className='button' ref={btnRefList} onClick={clickBtn}>
-        <li data-index='1' className={button === '1' ? 'on' : 'off'}>
+        <li data-type='interest' className={button === 'interest' ? 'on' : 'off'}>
           Hotel
         </li>
-        <li data-index='2' className={button === '2' ? 'on' : 'off'}>
+        <li data-type='attraction' className={button === 'attraction' ? 'on' : 'off'}>
           Attraction
         </li>
-        <li data-index='3' className={button === '3' ? 'on' : 'off'}>
+        <li data-type='food' className={button === 'food' ? 'on' : 'off'}>
           Food
         </li>
       </ul>
 
       <ul className={`youtube_container ${show === true ? 'on' : 'off'}`}>
-        {videos.map((video) => {
+        {data.map((video) => {
           const title =
             video.snippet.title.length > 25
               ? video.snippet.title.substring(0, 25) + '...'
@@ -105,7 +89,7 @@ function About(props) {
           );
         })}
       </ul>
-      {count.current < btnInfo.current[parseInt(button) - 1].maxResult - 1 && (
+      {count.current < maxResult[button] && (
         <div className='btnBox'>
           <FontAwesomeIcon onClick={moreLoad} icon={faChevronDown} className='moreBtn' />
         </div>
