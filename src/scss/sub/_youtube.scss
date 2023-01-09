@@ -37,7 +37,7 @@
     .youtube_container {
       display: flex;
       flex-wrap: wrap;
-      transition: 0.5s;
+      transition: 0.3s;
       &.off {
         opacity: 0;
         transform: translateY(70px);
