@@ -5,7 +5,9 @@ import React from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../common/Layout';
+import * as types from '../../redux/actionType';
 
 function About(props) {
   const [videos, setVideos] = useState([]);
@@ -36,6 +38,9 @@ function About(props) {
       setShow(true);
     }, 500);
   };
+  useSelector((store) => {
+    console.log(store.youtubeReducer.youtube);
+  });
 
   const clickBtn = (e) => {
     if (e.target === e.currentTarget) return;
@@ -59,6 +64,7 @@ function About(props) {
     setShow(false);
     getPlayList(btnInfo.current[parseInt(button) - 1]);
   }, [btnInfo]);
+
   return (
     <Layout name={'Youtube'}>
       <ul className='button' ref={btnRefList} onClick={clickBtn}>
