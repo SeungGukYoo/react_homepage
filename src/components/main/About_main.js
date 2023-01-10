@@ -1,7 +1,49 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Anime from '../../asset/anime';
 
 function AboutMain() {
+  const slider = useRef(null);
+  const nextSlide = () => {
+    const panel = slider.current.children[0];
+    new Anime(panel, {
+      prop: 'margin-left',
+      value: '-200%',
+      duration: 500,
+      callback: () => {
+        panel.append(panel.firstElementChild);
+        panel.style.marginLeft = '-100%';
+      }
+    });
+  };
+  const prevSlide = () => {
+    const panel = slider.current.children[0];
+    new Anime(panel, {
+      prop: 'margin-left',
+      value: '0%',
+      duration: 500,
+      callback: () => {
+        panel.prepend(panel.lastElementChild);
+        panel.style.marginLeft = '-100%';
+      }
+    });
+  };
+
+  const init = () => {
+    const panel = slider.current.children[0];
+    const lis = panel.querySelectorAll('li');
+    const len = lis.length;
+
+    panel.style.width = 100 * len + '%';
+    lis.forEach((el) => (el.style.width = 100 / len + '%'));
+    panel.prepend(panel.lastElementChild);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
   return (
     <section className='about_main scrollContent'>
       <div className='inner'>
@@ -23,13 +65,20 @@ function AboutMain() {
             </Link>
           </div>
         </article>
-        <article className='about_image'>
-          <img src={`${process.env.PUBLIC_URL}/images/about_image.jpg`} alt='room_Picture' />
-          <ul>
-            <li className='on'></li>
-            <li></li>
-            <li></li>
+        <article className='about_image' ref={slider}>
+          <ul className='slider'>
+            <li className='imgBox'>
+              <img src={`${process.env.PUBLIC_URL}/images/gallery_image1.jpg`} alt='room_Picture' />
+            </li>
+            <li className='imgBox'>
+              <img src={`${process.env.PUBLIC_URL}/images/gallery_image2.jpg`} alt='room_Picture' />
+            </li>
+            <li className='imgBox'>
+              <img src={`${process.env.PUBLIC_URL}/images/gallery_image4.jpg`} alt='room_Picture' />
+            </li>
           </ul>
+          <FontAwesomeIcon onClick={nextSlide} className='nextSlide' icon={faChevronLeft} />
+          <FontAwesomeIcon onClick={prevSlide} className='rightSlide' icon={faChevronRight} />
         </article>
       </div>
     </section>
