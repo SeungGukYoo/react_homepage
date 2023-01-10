@@ -11,7 +11,7 @@ import Contact from './components/sub/Contact';
 import './scss/style.scss';
 import NavbarTablet from './components/common/Navbar_tablet';
 import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import * as types from './redux/actionType';
 
