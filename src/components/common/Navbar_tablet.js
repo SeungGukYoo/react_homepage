@@ -18,7 +18,11 @@ const NavbarTablet = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <nav className={`mobile_navbar ${open ? 'on' : 'off'}`} ref={navRef}>
+    <nav
+      className={`mobile_navbar ${open ? 'on' : 'off'}`}
+      ref={navRef}
+      onClick={() => setOpen(false)}
+    >
       <h1>
         <NavLink to='/'>vipp</NavLink>
       </h1>
