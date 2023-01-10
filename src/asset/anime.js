@@ -1,4 +1,4 @@
-class Anime {
+export default class Anime {
   constructor(selector, option) {
     this.selector = selector;
     this.option = option;
