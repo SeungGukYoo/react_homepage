@@ -1,28 +1,53 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import FirstInfo from './InfoPage/first_info';
+import SecondInfo from './InfoPage/second_info';
+import ThirdInfo from './InfoPage/third_info';
 
 function InfoMain() {
+  const [showBox, setShowBox] = useState(true);
+  const listBox = useRef('1');
+
+  const showInfo = (e) => {
+    setShowBox(false);
+    const delay = setTimeout(() => {
+      listBox.current = e.target.dataset.type;
+      setShowBox(true);
+      return clearTimeout(delay);
+    }, 500);
+  };
   return (
     <section className='info_main scrollContent'>
       <div className='inner'>
         <article className='info_description'>
           <div>
             <div className='info_list'>
-              <span className='on'>Vipp Chimney</span>
-              <span>Vipp Shetter</span>
-              <span>Vipp Loft</span>
+              <span
+                data-type='1'
+                className={`${listBox.current === '1' ? 'on' : 'off'}`}
+                onClick={showInfo}
+              >
+                Vipp Chimney
+              </span>
+              <span
+                data-type='2'
+                className={`${listBox.current === '2' ? 'on' : 'off'}`}
+                onClick={showInfo}
+              >
+                Vipp Shetter
+              </span>
+              <span
+                data-type='3'
+                className={`${listBox.current === '3' ? 'on' : 'off'}`}
+                onClick={showInfo}
+              >
+                Vipp Loft
+              </span>
             </div>
-            <h1>
-              <span>Take a look&nbsp;</span>
-              <span>at out rooms</span>
-            </h1>
-            <p>
-              <span>The hotel is small with just three locations, but </span>
-              <span>more are in the making. Treat yourself to a </span>
-              <span>getaway in the Vipp Shelter surrounded by </span>
-              <span>Swedish nature, go for maximized urbanity at the </span>
-              <span>Vipp Loft in Copenhagen, or check into a hisoric </span>
-              <span>Copenhagen landmark at Vipp Chimney House.</span>
-            </p>
+            <div className={`infoBox ${showBox ? 'on' : 'off'}`}>
+              {listBox.current === '1' && <FirstInfo />}
+              {listBox.current === '2' && <SecondInfo />}
+              {listBox.current === '3' && <ThirdInfo />}
+            </div>
             <button className='globalButton'>Read all facts</button>
           </div>
         </article>
