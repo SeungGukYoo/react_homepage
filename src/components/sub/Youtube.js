@@ -1,4 +1,4 @@
-import { faChevronDown, faL } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChevronDown, faL } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React from 'react';
@@ -65,26 +65,26 @@ function About(props) {
 
       <ul className={`youtube_container ${show === true ? 'on' : 'off'}`}>
         {data.map((video) => {
-          const title =
-            video.snippet.title.length > 25
-              ? video.snippet.title.substring(0, 25) + '...'
-              : video.snippet.title;
           let des =
-            video.snippet.description.length > 200
-              ? video.snippet.description.substring(0, 200) + '...'
+            video.snippet.description.length > 400
+              ? video.snippet.description.substring(0, 400) + '...'
               : video.snippet.description;
           des.length === 0 &&
             (des =
               'Welcome to Details in Luxury and in this video we are going to give you guys an in depth look inside the vipp Hotel.');
           return (
             <li key={video.snippet.resourceId.videoId}>
-              <p className='video_title'>{title}</p>
-              <div className='thumbnail'>
-                <img src={video.snippet.thumbnails.medium.url} alt='videoThumbnail' />
-              </div>
-              <div className='video_info'>
-                <p className='video_des'>{des}</p>
-              </div>
+              <article>
+                <div className='thumbnail'>
+                  <img src={video.snippet.thumbnails.medium.url} alt='videoThumbnail' />
+                </div>
+              </article>
+              <article>
+                <div className='video_info'>
+                  <p className='video_title'>{video.snippet.title}</p>
+                  <p className='video_des'>{des}</p>
+                </div>
+              </article>
             </li>
           );
         })}
