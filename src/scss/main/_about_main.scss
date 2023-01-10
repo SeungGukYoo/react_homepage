@@ -87,24 +87,24 @@
 
 @media screen and (max-width: $tablet) {
   .about_main {
+    height: 80%;
     .inner {
-      padding: 50px 4vw;
+      padding: 20px 4vw;
       flex-direction: column;
       .about_description {
         div {
           position: relative;
-          display: flex;
+          // display: flex;
           align-items: center;
           justify-content: space-between;
           width: 100%;
-          flex-wrap: wrap;
+          // flex-wrap: wrap;
           P {
             flex: 1;
             margin-bottom: 0;
           }
           h1 {
             flex: 1;
-            // text-align: center;
           }
           a {
             display: none;
@@ -113,6 +113,7 @@
       }
       .about_image {
         width: 100%;
+        flex: 1;
       }
     }
   }
@@ -137,50 +138,5 @@
         }
       }
     }
-    //     .inner {
-    //       padding: 20px 0;
-    //       display: block;
-
-    //       .about_description {
-    //         display: block;
-    //         position: absolute;
-    //         top: 10%;
-    //         z-index: 3;
-
-    //         div {
-    //           h1 {
-    //             color: #fff;
-    //             font-size: 30px;
-    //             margin-bottom: 15px;
-    //           }
-    //           p {
-    //             color: #fff;
-    //             font-size: 11px;
-    //             font-weight: normal;
-    //             line-height: auto;
-    //             margin-bottom: 25px;
-    //           }
-    //           a {
-    //             font-family: 'Raleway', sans-serif;
-
-    //             line-height: 40px;
-    //             width: 120px;
-    //             height: 40px;
-    //             font-size: 12px;
-    //           }
-    //         }
-    //       }
-    //       .about_image {
-    //         height: 100%;
-    //         ul {
-    //           position: absolute;
-    //           bottom: 3vh;
-    //           left: 5vw;
-    //           display: block;
-    //           display: flex;
-    //           gap: 20px;
-    //         }
-    //       }
-    //     }
   }
 }
