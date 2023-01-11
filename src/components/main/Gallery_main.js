@@ -11,46 +11,50 @@ function GalleryMain(props) {
   const ref = useRef(null);
   const articleRef = useRef(null);
   const articleWidth = useRef(null);
+
   const containerWidth = useRef(null);
   const [container, setContainer] = useState(0);
 
   const moveLeftArrow = () => {
     let num = container;
-    if (num + 410 > 0) return;
-    ref.current.style.transform = `translateX(${num + 410}px)`;
-    setContainer((prev) => (prev = prev + 410));
+    if (num + articleWidth.current > 0) return;
+    ref.current.style.transform = `translateX(${num + articleWidth.current}px)`;
+    setContainer((prev) => (prev += articleWidth.current));
   };
   const moveRightArrow = () => {
     let num = container;
-    if (num - 410 < -containerWidth.current * 4) return;
-    ref.current.style.transform = `translateX(${num - 410}px)`;
-    setContainer((prev) => (prev = prev - 410));
+
+    console.log(containerWidth.current);
+    if (num + articleWidth.current < -containerWidth.current) return;
+    ref.current.style.transform = `translateX(${num - articleWidth.current}px)`;
+    setContainer((prev) => (prev -= articleWidth.current));
   };
 
   const resizeWidth = () => {
-    containerWidth.current = parseInt(getComputedStyle(ref.current)['width']);
-
-    console.log(containerWidth.current);
+    if (1179 < window.innerWidth) {
+      containerWidth.current = parseInt(getComputedStyle(ref.current)['width']);
+      articleWidth.current = 450;
+    }
+    if (570 < window.innerWidth && 1179 > window.innerWidth) {
+      containerWidth.current = parseInt(getComputedStyle(ref.current)['width']);
+      articleWidth.current = 250;
+    }
+    if (window.innerWidth < 570) {
+      containerWidth.current = parseInt(getComputedStyle(ref.current)['width']) + 150;
+      articleWidth.current = 150;
+    }
   };
 
   flickr.current = useSelector((store) => store.flickrReducer.flickr);
-  if (flickr.current.length > 0) {
-    // articleWidth.current = parseInt(getComputedStyle(articleRef.current)['width']);
-  }
 
   useEffect(() => {
     resizeWidth();
     window.addEventListener('resize', resizeWidth);
-    //
     return () => {
       window.removeEventListener('resize', resizeWidth);
     };
   }, []);
-  useEffect(() => {
-    if (articleWidth.current === null) return;
-    articleWidth.current = getComputedStyle(articleRef.current)['width'];
-  }, []);
-  
+
   return (
     <section className='gallery_main scrollContent'>
       <div className='inner'>
@@ -61,14 +65,17 @@ function GalleryMain(props) {
         <p>Go to Instagram</p>
         <div className='wrap'>
           <div className='container' ref={ref}>
-            {flickr.current.map((img, idx) => (
-              <article key={idx} ref={articleRef}>
-                <img
-                  src={`https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_m.jpg`}
-                  alt=''
-                />
-              </article>
-            ))}
+            {flickr.current.map((img, idx) => {
+              if (idx > 7) return null;
+              return (
+                <article key={idx} ref={articleRef}>
+                  <img
+                    src={`https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_m.jpg`}
+                    alt=''
+                  />
+                </article>
+              );
+            })}
           </div>
         </div>
 
