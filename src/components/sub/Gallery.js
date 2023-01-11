@@ -1,37 +1,29 @@
-import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Layout from '../common/Layout';
 import Masonry from 'react-masonry-component';
-
+import { useSelector } from 'react-redux';
+import * as types from '../../redux/actionType';
 function Gallery(props) {
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState({});
   const [loading, setLoading] = useState(false);
-  const key = '45c970bc3ee3b60b35d021e520358df0';
-  const secret = '341183f9b84def36';
-  const baseUrl = 'https://www.flickr.com/services/rest/?';
-  const trand = 'flickr.interestingness.getList';
-  const flickr = async () => {
-    const json = await axios.get(
-      `${baseUrl}method=${trand}&api_key=${key}&per_page=20&extras=date_taken&format=json&nojsoncallback=1`
-    );
-
-    setPhotos(json.data.photos.photo);
-  };
+  // const key = '45c970bc3ee3b60b35d021e520358df0';
+  // const secret = '341183f9b84def36';
 
   const masonryOptions = {
     transitionDuration: '0.5s'
   };
+  const images = useSelector((store) => store.flickrReducer.flickr);
 
   useEffect(() => {
-    flickr();
+    setPhotos({ type: types.FLICKR.start });
   }, []);
 
   return (
     <Layout name={'Gallery'}>
       <Masonry options={masonryOptions} className='masonry_container'>
-        {photos.map((photo) => {
+        {images.map((photo) => {
           const title = photo.title.length > 20 ? photo.title.substring(0, 21) + '..' : photo.title;
           const date = photo.datetaken.split(' ')[0];
           return (
