@@ -1,27 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useImperativeHandle } from 'react';
 import { forwardRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import * as types from '../../redux/actionType';
 
-const NavbarTablet = forwardRef((props, ref) => {
-  const [open, setOpen] = useState(false);
-
+function NavbarTablet() {
   const navRef = useRef(null);
-
-  useImperativeHandle(ref, () => {
-    return {
-      toggle: () => setOpen((prev) => !prev)
-    };
-  });
+  const dispatch = useDispatch();
   useEffect(() => {
-    window.addEventListener('resize', () => window.innerWidth > 1179 && setOpen(false));
-  }, []);
+    window.addEventListener(
+      'resize',
+      () => window.innerWidth > 1179 && dispatch({ type: types.MENU.close })
+    );
+  }, [dispatch]);
+  const { open } = useSelector((store) => store.menuReducer);
 
   return (
     <nav
       className={`mobile_navbar ${open ? 'on' : 'off'}`}
       ref={navRef}
-      onClick={() => setOpen(false)}
+      onClick={() => dispatch({ type: types.MENU.close })}
     >
       <h1>
         <NavLink to='/'>vipp</NavLink>
@@ -42,6 +41,6 @@ const NavbarTablet = forwardRef((props, ref) => {
       </ul>
     </nav>
   );
-});
+}
 
 export default NavbarTablet;
