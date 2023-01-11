@@ -3,7 +3,11 @@ import NavbarPc from './Navbar_pc';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-function Header({ type, openState }) {
+import { useDispatch } from 'react-redux';
+import * as types from '../../redux/actionType';
+function Header({ type }) {
+  const dispatch = useDispatch();
+
   return (
     <header className={type}>
       <div className='inner'>
@@ -16,7 +20,7 @@ function Header({ type, openState }) {
         <FontAwesomeIcon
           icon={faBars}
           className='menu_btn'
-          onClick={() => openState.current.toggle()}
+          onClick={() => dispatch({ type: types.MENU.toggle })}
         />
       </div>
     </header>
