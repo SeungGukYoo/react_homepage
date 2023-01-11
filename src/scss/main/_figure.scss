@@ -11,6 +11,7 @@
     left: 0;
     z-index: -1;
     background: url(../../../public/images/home_background.jpg) no-repeat center/cover;
+    filter: grayscale(0.9);
   }
   .inner {
     height: 100%;
