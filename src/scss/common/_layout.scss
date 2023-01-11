@@ -26,7 +26,7 @@
     transform: translateY(100px);
     transition: all 1s;
     > h1 {
-      font: normal 50px/1 'Raleway';
+      font: normal 50px/1 'Sofia Sans';
       color: #777;
       margin-bottom: 50px;
       &::after {
@@ -35,7 +35,7 @@
         display: block;
         content: '';
         width: 0px;
-        height: 2px;
+        height: 1px;
         background-color: #777;
       }
     }
@@ -45,8 +45,6 @@
       > h1 {
         &::after {
           width: 70px;
-
-          // background-color: #777;
         }
       }
     }
