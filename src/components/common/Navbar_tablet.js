@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useImperativeHandle } from 'react';
-import { forwardRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as types from '../../redux/actionType';
