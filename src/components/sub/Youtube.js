@@ -8,12 +8,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../common/Layout';
 import * as types from '../../redux/actionType';
+import Modal from '../common/Modal';
 
 function About(props) {
   const [videos, setVideos] = useState({ type: 'interest', count: 6 });
   const [button, setButton] = useState('interest');
   const [show, setShow] = useState(false);
+  const [index, setIndex] = useState(0);
   const btnRefList = useRef(null);
+  const modal = useRef(null);
   const count = useRef(6);
   const dispatch = useDispatch();
 
@@ -50,51 +53,65 @@ function About(props) {
   }, [videos]);
 
   return (
-    <Layout name={'Youtube'}>
-      <ul className='button' ref={btnRefList} onClick={clickBtn}>
-        <li data-type='interest' className={button === 'interest' ? 'on' : 'off'}>
-          Hotel
-        </li>
-        <li data-type='attraction' className={button === 'attraction' ? 'on' : 'off'}>
-          Attraction
-        </li>
-        <li data-type='food' className={button === 'food' ? 'on' : 'off'}>
-          Food
-        </li>
-      </ul>
+    <>
+      <Layout name={'Youtube'}>
+        <ul className='button' ref={btnRefList} onClick={clickBtn}>
+          <li data-type='interest' className={button === 'interest' ? 'on' : 'off'}>
+            Hotel
+          </li>
+          <li data-type='attraction' className={button === 'attraction' ? 'on' : 'off'}>
+            Attraction
+          </li>
+          <li data-type='food' className={button === 'food' ? 'on' : 'off'}>
+            Food
+          </li>
+        </ul>
 
-      <ul className={`youtube_container ${show === true ? 'on' : 'off'}`}>
-        {data.map((video) => {
-          let des =
-            video.snippet.description.length > 400
-              ? video.snippet.description.substring(0, 400) + '...'
-              : video.snippet.description;
-          des.length === 0 &&
-            (des =
-              'Welcome to Details in Luxury and in this video we are going to give you guys an in depth look inside the vipp Hotel.');
-          return (
-            <li key={video.snippet.resourceId.videoId}>
-              <article>
-                <div className='thumbnail'>
-                  <img src={video.snippet.thumbnails.medium.url} alt='videoThumbnail' />
-                </div>
-              </article>
-              <article>
-                <div className='video_info'>
-                  <p className='video_title'>{video.snippet.title}</p>
-                  <p className='video_des'>{des}</p>
-                </div>
-              </article>
-            </li>
-          );
-        })}
-      </ul>
-      {count.current < maxResult[button] && (
-        <div className='btnBox'>
-          <FontAwesomeIcon onClick={moreLoad} icon={faChevronDown} className='moreBtn' />
-        </div>
-      )}
-    </Layout>
+        <ul className={`youtube_container ${show === true ? 'on' : 'off'}`}>
+          {data.map((video, idx) => {
+            let des =
+              video.snippet.description.length > 400
+                ? video.snippet.description.substring(0, 400) + '...'
+                : video.snippet.description;
+            des.length === 0 &&
+              (des =
+                'Welcome to Details in Luxury and in this video we are going to give you guys an in depth look inside the vipp Hotel.');
+            return (
+              <li
+                key={video.snippet.resourceId.videoId}
+                onClick={() => {
+                  setIndex(idx);
+                  return modal.current.open();
+                }}
+              >
+                <article>
+                  <div className='thumbnail'>
+                    <img src={video.snippet.thumbnails.medium.url} alt='videoThumbnail' />
+                  </div>
+                </article>
+                <article>
+                  <div className='video_info'>
+                    <p className='video_title'>{video.snippet.title}</p>
+                    <p className='video_des'>{des}</p>
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+        {count.current < maxResult[button] && (
+          <div className='btnBox'>
+            <FontAwesomeIcon onClick={moreLoad} icon={faChevronDown} className='moreBtn' />
+          </div>
+        )}
+      </Layout>
+      <Modal ref={modal}>
+        <iframe
+          title={data[0]?.id}
+          src={`https://www.youtube.com/embed/${data[index]?.snippet.resourceId.videoId}`}
+        ></iframe>
+      </Modal>
+    </>
   );
 }
 
