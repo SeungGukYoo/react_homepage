@@ -5,6 +5,7 @@ $mobile: 570px;
 @import 'common/layout';
 @import 'common/header';
 @import 'common/footer';
+@import 'common/modal';
 @import 'main/figure';
 @import 'main/about_main';
 @import 'main/bannel_main';
@@ -52,7 +53,9 @@ $mobile: 570px;
     padding: 21px 0;
 
     font-size: 40px;
-
+    a {
+      color: #000;
+    }
     &::after {
       content: 'An untraditional hotel';
       font-size: 12px;
