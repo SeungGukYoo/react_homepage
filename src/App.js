@@ -16,7 +16,6 @@ import { useEffect } from 'react';
 import * as types from './redux/actionType';
 
 function App() {
-  const openState = useRef(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,8 +26,8 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path='/' render={() => <Main type={'main'} openState={openState} />} />
-        <Route path='/' render={() => <Header type={'sub'} openState={openState} />} />
+        <Route exact path='/' render={() => <Main type={'main'} />} />
+        <Route path='/' render={() => <Header type={'sub'} />} />
       </Switch>
       <Route path='/youtube' component={Youtube} />
       <Route path='/department' component={Department} />
@@ -36,7 +35,7 @@ function App() {
       <Route path='/gallery' component={Gallery} />
 
       <Footer />
-      <NavbarTablet ref={openState} />
+      <NavbarTablet />
     </>
   );
 }
