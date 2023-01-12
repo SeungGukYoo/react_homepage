@@ -1,19 +1,16 @@
 import { Route, Switch } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import * as types from './redux/actionType';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
 import Youtube from './components/sub/Youtube';
-
 import Department from './components/sub/Department';
 import Gallery from './components/sub/Gallery';
 import Main from './components/main/Main';
 import Contact from './components/sub/Contact';
-import './scss/style.scss';
 import NavbarTablet from './components/common/Navbar_tablet';
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import * as types from './redux/actionType';
+import './scss/style.scss';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +30,6 @@ function App() {
       <Route path='/department' component={Department} />
       <Route path='/contact' component={Contact} />
       <Route path='/gallery' component={Gallery} />
-
       <Footer />
       <NavbarTablet />
     </>

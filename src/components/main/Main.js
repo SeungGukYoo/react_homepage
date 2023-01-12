@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../common/Header';
 import AboutMain from './About_main';
 import BannelMain from './Bannel_main';

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Modal = forwardRef((props, ref) => {

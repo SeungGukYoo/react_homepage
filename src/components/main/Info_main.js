@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import FirstInfo from './InfoPage/first_info';
 import SecondInfo from './InfoPage/second_info';
 import ThirdInfo from './InfoPage/third_info';

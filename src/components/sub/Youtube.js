@@ -1,13 +1,9 @@
-import { faArrowRight, faChevronDown, faL } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
-import React from 'react';
-import { useRef } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Layout from '../common/Layout';
 import * as types from '../../redux/actionType';
+import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 
 function About(props) {

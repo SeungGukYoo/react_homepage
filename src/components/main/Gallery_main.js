@@ -1,12 +1,9 @@
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-function GalleryMain(props) {
+function GalleryMain() {
   const flickr = useRef(null);
   const ref = useRef(null);
   const articleRef = useRef(null);

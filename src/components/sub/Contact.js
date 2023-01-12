@@ -1,6 +1,4 @@
-import React, { useMemo, useRef } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useMemo, useRef, useEffect, useState } from 'react';
 import Layout from '../common/Layout';
 import ContactInfo from './contact/Contact_info';
 

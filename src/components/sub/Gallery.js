@@ -1,18 +1,13 @@
-import React, { useRef } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import Layout from '../common/Layout';
-import Masonry from 'react-masonry-component';
+import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Masonry from 'react-masonry-component';
 import * as types from '../../redux/actionType';
+import Layout from '../common/Layout';
 import Modal from '../common/Modal';
-function Gallery(props) {
-  const [photos, setPhotos] = useState({});
-  const [loading, setLoading] = useState(false);
+function Gallery() {
+  const [, setPhotos] = useState({});
   const [img, setImg] = useState({});
   const modal = useRef(null);
-  // const key = '45c970bc3ee3b60b35d021e520358df0';
-  // const secret = '341183f9b84def36';
 
   const masonryOptions = {
     transitionDuration: '0.5s'
@@ -22,7 +17,6 @@ function Gallery(props) {
   useEffect(() => {
     setPhotos({ type: types.FLICKR.start });
   }, []);
-  console.log(img);
 
   return (
     <>

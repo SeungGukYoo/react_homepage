@@ -1,11 +1,8 @@
-import axios from 'axios';
-import React from 'react';
-import { useEffect } from 'react';
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../common/Layout';
+import axios from 'axios';
 
-function Department(props) {
+function Department() {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {

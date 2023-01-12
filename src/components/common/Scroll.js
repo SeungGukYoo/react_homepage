@@ -4,5 +4,3 @@ export function Scroll(ref) {
   const result = [...sectionArr].map((section) => section.offsetTop);
   return result;
 }
-
-export function getSizeArray() {}

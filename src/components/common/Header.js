@@ -1,4 +1,4 @@
-import React from 'react';
+
 import NavbarPc from './Navbar_pc';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 function BannelMain() {
   return (
     <section className='bannel_main scrollContent'>

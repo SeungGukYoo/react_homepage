@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 function Figure() {
   const innerRef = useRef(null);
