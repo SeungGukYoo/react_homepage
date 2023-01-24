@@ -40,6 +40,19 @@ const menuReducer = (state = { open: false }, action) => {
   }
 };
 
-const reducers = combineReducers({ youtubeReducer, flickrReducer, menuReducer });
+const userReducer = (state = { user: [] }, action) => {
+  switch (action.type) {
+    case types.USER.start:
+      return state;
+    case types.USER.success:
+      return { ...state, user: action.payload };
+    case types.USER.fail:
+      return { ...state, user: action.payload };
+    default:
+      return state;
+  }
+};
+
+const reducers = combineReducers({ youtubeReducer, flickrReducer, menuReducer, userReducer });
 
 export default reducers;

@@ -14,3 +14,9 @@ export const MENU = {
   close: 'MENU_CLOSE',
   toggle: 'MENU_TOGGLE'
 };
+
+export const USER = {
+  start: 'USER_REQUEST',
+  success: 'USER_SUCCESS',
+  fail: 'USER_FAIL'
+};
