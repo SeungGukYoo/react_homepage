@@ -17,6 +17,9 @@ header {
       &.on {
         color: rgb(56, 83, 75);
       }
+      &.off {
+        color: #fff;
+      }
     }
     .logo {
       color: #eee;
@@ -40,9 +43,6 @@ header {
     background: rgb(218, 217, 217);
     .inner {
       .logo {
-        color: #000;
-      }
-      .menu_btn {
         color: #000;
       }
       .gnb {
