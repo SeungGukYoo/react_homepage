@@ -1,6 +1,6 @@
-import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
+import { all, call, delay, fork, put, takeLatest } from 'redux-saga/effects';
 import * as types from './actionType';
-import { getYoutube, getFlickr } from './api';
+import { getYoutube, getFlickr, getUser } from './api';
 
 function* returnYoutube(action) {
   try {
@@ -32,6 +32,22 @@ function* returnFlickr() {
   }
 }
 
+function* returnUser() {
+  try {
+    delay(1000);
+    const response = yield call(getUser);
+    yield put({
+      type: types.USER.success,
+      payload: response
+    });
+  } catch (err) {
+    yield put({
+      type: types.USER.fail,
+      payload: err
+    });
+  }
+}
+
 function* callYoutube() {
   yield takeLatest(types.YOUTUBE.start, returnYoutube);
 }
@@ -39,7 +55,10 @@ function* callYoutube() {
 function* callFlickr() {
   yield takeLatest(types.FLICKR.start, returnFlickr);
 }
+function* callUser() {
+  yield takeLatest(types.USER.start, returnUser);
+}
 
 export default function* rootSaga() {
-  yield all([fork(callYoutube), fork(callFlickr)]);
+  yield all([fork(callYoutube), fork(callFlickr), fork(callUser)]);
 }
