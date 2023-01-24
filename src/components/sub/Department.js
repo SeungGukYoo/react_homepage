@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Layout from '../common/Layout';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import * as types from '../../redux/actionType';
 
 function Department() {
-  const [members, setMembers] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(`${process.env.PUBLIC_URL}/DB/members.json`)
-      .then((result) => setMembers(result.data.members));
-  }, []);
+    dispatch({
+      type: types.USER.start
+    });
+  }, [dispatch]);
+  
+  const member = useSelector((store) => store.userReducer);
+
   return (
     <Layout name={'Department'}>
       <div className='company_description'>
@@ -81,7 +85,7 @@ function Department() {
       </div>
       <h3>VIPP PEOPLE</h3>
       <ul>
-        {members.map((member, idx) => {
+        {member.user.map((member, idx) => {
           return (
             <li style={{ order: idx }} key={idx}>
               <div>
