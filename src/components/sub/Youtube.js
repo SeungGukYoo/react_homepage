@@ -8,12 +8,12 @@ import Modal from '../common/Modal';
 
 function About(props) {
   const [videos, setVideos] = useState({ type: 'interest', count: 6 });
+  const count = useRef(6);
   const [button, setButton] = useState('interest');
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState(0);
   const btnRefList = useRef(null);
   const modal = useRef(null);
-  const count = useRef(6);
   const dispatch = useDispatch();
 
   const maxResult = {
@@ -39,7 +39,7 @@ function About(props) {
 
   useEffect(() => {
     dispatch({ type: types.YOUTUBE.start, Info: videos });
-  }, [dispatch, videos, show]);
+  }, [dispatch, videos]);
 
   useEffect(() => {
     const delay = setTimeout(() => {
