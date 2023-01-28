@@ -4,16 +4,10 @@
 
 Pinterest에 올라온 디자인을 참고하여 제작하였으며, Youtube와 Flickr, Kakao API를 사용한 홈페이지입니다.<br> 전체적인 페이지의 구성은 기업형 레이아웃에 맞춰서 제작하였습니다.
 
----
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
-<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
-<img src="https://img.shields.io/badge/Redux-Saga-3776AB?style=for-the-badge&logo=Redux-Saga&logoColor=white">
-<img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white">
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white"> <img src="https://img.shields.io/badge/Redux-Saga-3776AB?style=for-the-badge&logo=Redux-Saga&logoColor=white"> <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white"> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
 
 - React@17
 - SASS
@@ -26,7 +20,6 @@ Pinterest에 올라온 디자인을 참고하여 제작하였으며, Youtube와 
 - Masonry
 - Framer Motion@6
 
----
 
 ## 홈페이지 구성
 
