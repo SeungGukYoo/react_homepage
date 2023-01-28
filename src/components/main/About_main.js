@@ -68,13 +68,13 @@ function AboutMain() {
         <article className='about_image' ref={slider}>
           <ul className='slider'>
             <li className='imgBox'>
-              <img src={`${process.env.PUBLIC_URL}/images/gallery_image1.jpg`} alt='room_Picture' />
+              <img src={`${process.env.PUBLIC_URL}/images/about_image1.jpg`} alt='room_Picture' />
             </li>
             <li className='imgBox'>
-              <img src={`${process.env.PUBLIC_URL}/images/gallery_image2.jpg`} alt='room_Picture' />
+              <img src={`${process.env.PUBLIC_URL}/images/about_image2.jpg`} alt='room_Picture' />
             </li>
             <li className='imgBox'>
-              <img src={`${process.env.PUBLIC_URL}/images/gallery_image4.jpg`} alt='room_Picture' />
+              <img src={`${process.env.PUBLIC_URL}/images/about_image3.jpg`} alt='room_Picture' />
             </li>
           </ul>
           <FontAwesomeIcon onClick={nextSlide} className='nextSlide' icon={faChevronLeft} />
