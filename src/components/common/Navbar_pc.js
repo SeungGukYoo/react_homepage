@@ -17,9 +17,9 @@ function NavbarPc() {
           <NavLink to='/contact'>Contact</NavLink>
         </li>
       </ul>
-      <Link className='globalButton' to='/'>
+      <p className='globalButton' to=''>
         Make a reservation
-      </Link>
+      </p>
     </>
   );
 }
