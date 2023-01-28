@@ -1,4 +1,4 @@
-import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
+import { all, call, delay, fork, put, takeLatest } from 'redux-saga/effects';
 import * as types from './actionType';
 import { getYoutube, getFlickr, getUser } from './api';
 
@@ -34,6 +34,7 @@ function* returnFlickr() {
 
 function* returnUser() {
   try {
+    yield delay(300);
     const response = yield call(getUser);
     yield put({
       type: types.USER.success,
