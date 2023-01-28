@@ -2,6 +2,7 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function GalleryMain() {
   const flickr = useRef(null);
@@ -59,7 +60,9 @@ function GalleryMain() {
           <span>Our latest </span>
           <span>Instagrams</span>
         </h1>
-        <p>Go to Instagram</p>
+        <Link to='/gallery'>
+          <p>Go to Gallery</p>
+        </Link>
         <div className='wrap'>
           <div className='container' ref={ref}>
             {flickr.current.map((img, idx) => {
