@@ -3,7 +3,7 @@ function SecondInfo() {
     <>
       <h1>
         <span>Take a look&nbsp;</span>
-        <span>at our rooms</span>
+        <span>at our Shetter</span>
       </h1>
       <p>
         <span>The hotel is small with just three locations, but </span>

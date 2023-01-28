@@ -3,7 +3,7 @@ function ThirdInfo() {
     <>
       <h1>
         <span>Take a look&nbsp;</span>
-        <span>at out rooms</span>
+        <span>at our Loft</span>
       </h1>
       <p>
         <span>The hotel is small with just three locations, but </span>
