@@ -2,11 +2,10 @@
   .masonry_container {
     article {
       width: 25%;
-
       height: 650px;
       padding: 13px;
       margin-bottom: 50px;
-
+      cursor: pointer;
       .flickr_box {
         background-color: rgb(225, 225, 225);
         width: 100%;
@@ -17,7 +16,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
         .flickr_des {
           flex: 1;
           display: flex;
@@ -41,7 +39,6 @@
               font-weight: bold;
             }
           }
-          // margin-bottom: 70px;
         }
         .flickr_img {
           flex: 1;
