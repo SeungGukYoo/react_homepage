@@ -16,6 +16,7 @@ function Gallery() {
 
   useEffect(() => {
     setPhotos({ type: types.FLICKR.start });
+    window.scrollTo({ top: 0, left: 0 });
   }, []);
 
   return (
